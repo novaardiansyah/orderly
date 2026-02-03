@@ -26,3 +26,5 @@ Thumbs.db
 Makefile
 .agent
 .antigravity
+setup.sh
+deploy/
