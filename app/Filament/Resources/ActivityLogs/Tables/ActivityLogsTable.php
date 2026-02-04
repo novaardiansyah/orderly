@@ -22,24 +22,24 @@ class ActivityLogsTable
           ->label('#')
           ->rowIndex(),
         TextColumn::make('log_name')
-          ->label('Group')
+          ->label(__('resources/activity_logs.columns.log_name'))
           ->badge()
           ->color(fn($state) => ActivityLog::getLognameColor($state))
           ->formatStateUsing(fn($state) => ucwords($state))
           ->toggleable(),
         TextColumn::make('event')
-          ->label('Event')
+          ->label(__('resources/activity_logs.columns.event'))
           ->badge()
           ->color(fn($state) => ActivityLog::getEventColor($state))
           ->toggleable(),
         TextColumn::make('description')
-          ->label('Description')
+          ->label(__('resources/activity_logs.columns.description'))
           ->toggleable()
           ->wrap()
           ->limit(80)
           ->searchable(),
         TextColumn::make('subject_id')
-          ->label('Subject')
+          ->label(__('resources/activity_logs.columns.subject'))
           ->formatStateUsing(function ($state, ActivityLog $record) {
             if (!$state) return '-';
             return Str::of($record->subject_type)->afterLast('\\')->headline() . ' # ' . $state;
@@ -47,13 +47,15 @@ class ActivityLogsTable
           ->toggleable()
           ->searchable(),
         TextColumn::make('causer.name')
-          ->label('Causer')
+          ->label(__('resources/activity_logs.columns.causer'))
           ->searchable()
           ->toggleable(isToggledHiddenByDefault: true),
         TextColumn::make('batch_uuid')
+          ->label(__('resources/activity_logs.columns.batch_uuid'))
           ->searchable()
           ->toggleable(isToggledHiddenByDefault: true),
         TextColumn::make('created_at')
+          ->label(__('resources/activity_logs.columns.created_at'))
           ->dateTime()
           ->sortable()
           ->sinceTooltip()
@@ -67,12 +69,12 @@ class ActivityLogsTable
       ->recordActions([
         ActionGroup::make([
           ViewAction::make()
-            ->modalHeading('View detail activity log')
+            ->modalHeading(__('resources/activity_logs.actions.view_detail'))
             ->slideOver()
             ->modalWidth(Width::FiveExtraLarge),
 
           Action::make('preview_email')
-            ->modalHeading('Preview mail notification')
+            ->modalHeading(__('resources/activity_logs.actions.preview_email'))
             ->color('info')
             ->icon('heroicon-o-envelope')
             ->url(function (ActivityLog $record): string {

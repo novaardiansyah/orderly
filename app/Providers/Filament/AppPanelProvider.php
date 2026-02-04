@@ -2,10 +2,13 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\SetLocale;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -17,6 +20,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\HtmlString;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
@@ -45,10 +49,7 @@ class AppPanelProvider extends PanelProvider
       ])
       ->favicon(asset('favicon.png'))
       ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
-      ->widgets([
-        // AccountWidget::class,
-        // FilamentInfoWidget::class,
-      ])
+      ->widgets([])
       ->middleware([
         EncryptCookies::class,
         AddQueuedCookiesToResponse::class,
@@ -59,13 +60,20 @@ class AppPanelProvider extends PanelProvider
         SubstituteBindings::class,
         DisableBladeIconComponents::class,
         DispatchServingFilamentEvent::class,
+        SetLocale::class,
       ])
       ->authMiddleware([
         Authenticate::class,
       ])
       ->navigationGroups([
-        'Settings',
-        'Logs',
+        'Settings' => NavigationGroup::make(fn() => __('general.navigation_groups.settings')),
+        'Logs' => NavigationGroup::make(fn() => __('general.navigation_groups.logs')),
+      ])
+      ->userMenuItems([
+        MenuItem::make()
+          ->label(fn() => App::getLocale() === 'en' ? 'Bahasa Indonesia' : 'English')
+          ->url(fn() => route('filament.app.pages.switch-language'))
+          ->icon('heroicon-o-language'),
       ])
       ->renderHook(
         PanelsRenderHook::HEAD_END,

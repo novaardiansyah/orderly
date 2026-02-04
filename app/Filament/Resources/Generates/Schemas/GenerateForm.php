@@ -15,18 +15,21 @@ class GenerateForm
       ->components([
         Section::make()
           ->columns(2)
-          ->description('Configure the format')
+          ->description(__('resources/generates.sections.format_description'))
           ->collapsible()
           ->schema([
             TextInput::make('prefix')
+              ->label(__('resources/generates.columns.prefix'))
               ->required()
               ->maxLength(5)
               ->live(onBlur: true)
               ->afterStateUpdated(fn(callable $set, callable $get) => self::handleReviewID($set, $get)),
             TextInput::make('separator')
+              ->label(__('resources/generates.columns.separator'))
               ->readOnly()
               ->default(now()->format('ymd')),
             TextInput::make('queue')
+              ->label(__('resources/generates.columns.queue'))
               ->required()
               ->numeric()
               ->minValue(1)
@@ -35,21 +38,23 @@ class GenerateForm
               ->live(onBlur: true)
               ->afterStateUpdated(fn(callable $set, callable $get) => self::handleReviewID($set, $get)),
             TextInput::make('next_id')
-              ->label('Preview')
+              ->label(__('resources/generates.columns.preview'))
               ->disabled(),
           ]),
 
         Section::make()
           ->columns(2)
-          ->description('Basic information about the generate')
+          ->description(__('resources/generates.sections.basic_description'))
           ->collapsible()
           ->schema([
             TextInput::make('name')
+              ->label(__('resources/generates.columns.name'))
               ->required()
               ->maxLength(255)
               ->live(onBlur: true)
               ->afterStateUpdated(fn(callable $set, callable $get) => self::handleAlias($set, $get)),
             TextInput::make('alias')
+              ->label(__('resources/generates.columns.alias'))
               ->required()
               ->maxLength(25),
           ]),

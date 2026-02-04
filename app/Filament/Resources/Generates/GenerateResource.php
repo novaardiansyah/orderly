@@ -17,17 +17,30 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use UnitEnum;
 
 class GenerateResource extends Resource
 {
   protected static ?string $model = Generate::class;
 
   protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedIdentification;
-  protected static string|UnitEnum|null $navigationGroup = 'Settings';
   protected static ?int $navigationSort = 20;
 
   protected static ?string $recordTitleAttribute = 'name';
+
+  public static function getNavigationGroup(): ?string
+  {
+    return __('general.navigation_groups.settings');
+  }
+
+  public static function getModelLabel(): string
+  {
+    return __('general.resources.generate.label');
+  }
+
+  public static function getPluralModelLabel(): string
+  {
+    return __('general.resources.generate.plural_label');
+  }
 
   public static function form(Schema $schema): Schema
   {
@@ -46,9 +59,7 @@ class GenerateResource extends Resource
 
   public static function getRelations(): array
   {
-    return [
-      //
-    ];
+    return [];
   }
 
   public static function getPages(): array

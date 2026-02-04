@@ -17,58 +17,67 @@ class ActivityLogInfolist
       ->components([
         Section::make([
           TextEntry::make('causer.name')
-            ->label('Causer'),
+            ->label(__('resources/activity_logs.columns.causer')),
 
           TextEntry::make('subject_type')
-            ->label('Subject')
+            ->label(__('resources/activity_logs.columns.subject'))
             ->formatStateUsing(function ($state, ActivityLog $record) {
               if (!$state) return '-';
               return Str::of($state)->afterLast('\\')->headline() . ' # ' . $record->subject_id;
             }),
 
           TextEntry::make('created_at')
+            ->label(__('resources/activity_logs.columns.created_at'))
             ->dateTime()
             ->sinceTooltip(),
 
           TextEntry::make('log_name')
-            ->label('Group')
+            ->label(__('resources/activity_logs.columns.log_name'))
             ->badge()
             ->formatStateUsing(fn($state) => ucwords($state)),
 
           TextEntry::make('event')
-            ->label('Event')
+            ->label(__('resources/activity_logs.columns.event'))
             ->badge()
             ->color(fn($state) => ActivityLog::getEventColor($state)),
 
           TextEntry::make('description')
-            ->label('Description')
+            ->label(__('resources/activity_logs.columns.description'))
             ->wrap()
             ->limit(300)
             ->columnSpanFull(),
         ])
-          ->description('General information')
+          ->description(__('resources/activity_logs.sections.general_description'))
           ->collapsible()
           ->columns(3),
 
         Section::make([
-          TextEntry::make('ip_address'),
+          TextEntry::make('ip_address')
+            ->label(__('resources/activity_logs.columns.ip_address')),
 
-          TextEntry::make('timezone'),
+          TextEntry::make('timezone')
+            ->label(__('resources/activity_logs.columns.timezone')),
 
-          TextEntry::make('geolocation'),
+          TextEntry::make('geolocation')
+            ->label(__('resources/activity_logs.columns.geolocation')),
 
-          TextEntry::make('country'),
+          TextEntry::make('country')
+            ->label(__('resources/activity_logs.columns.country')),
 
-          TextEntry::make('city'),
+          TextEntry::make('city')
+            ->label(__('resources/activity_logs.columns.city')),
 
-          TextEntry::make('region'),
+          TextEntry::make('region')
+            ->label(__('resources/activity_logs.columns.region')),
 
-          TextEntry::make('postal'),
+          TextEntry::make('postal')
+            ->label(__('resources/activity_logs.columns.postal')),
 
           TextEntry::make('user_agent')
+            ->label(__('resources/activity_logs.columns.user_agent'))
             ->columnSpan(2),
         ])
-          ->description('Location and client information')
+          ->description(__('resources/activity_logs.sections.location_description'))
           ->collapsible()
           ->visible(
             fn(ActivityLog $record): bool =>
@@ -78,14 +87,14 @@ class ActivityLogInfolist
 
         Section::make([
           KeyValueEntry::make('properties_str')
-            ->label('Properties')
+            ->label(__('resources/activity_logs.columns.properties'))
             ->hidden(fn($state) => !$state),
 
           KeyValueEntry::make('prev_properties_str')
-            ->label('Previous properties')
+            ->label(__('resources/activity_logs.columns.prev_properties'))
             ->hidden(fn($state) => !$state),
         ])
-          ->description('Properties information')
+          ->description(__('resources/activity_logs.sections.properties_description'))
           ->collapsible()
           ->visible(
             fn(ActivityLog $record): bool =>

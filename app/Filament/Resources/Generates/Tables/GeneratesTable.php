@@ -24,45 +24,54 @@ class GeneratesTable
     return $table
       ->columns([
         TextColumn::make('name')
+          ->label(__('resources/generates.columns.name'))
           ->searchable()
           ->toggleable(),
         TextColumn::make('alias')
+          ->label(__('resources/generates.columns.alias'))
           ->searchable()
           ->toggleable()
           ->copyable()
           ->badge()
           ->color('info'),
         TextColumn::make('prefix')
+          ->label(__('resources/generates.columns.prefix'))
           ->searchable()
           ->toggleable()
           ->badge()
           ->color('info'),
         TextColumn::make('separator')
+          ->label(__('resources/generates.columns.separator'))
           ->searchable()
           ->toggleable()
           ->badge()
           ->color('info'),
         TextColumn::make('queue')
+          ->label(__('resources/generates.columns.queue'))
           ->numeric()
           ->sortable()
           ->toggleable()
           ->badge()
           ->color('info'),
         TextColumn::make('preview')
+          ->label(__('resources/generates.columns.preview'))
           ->copyable()
           ->badge()
           ->color('info')
           ->toggleable()
           ->state(fn(Generate $record) => $record->getNextId()),
         TextColumn::make('deleted_at')
+          ->label(__('resources/generates.columns.deleted_at'))
           ->dateTime()
           ->sortable()
           ->toggleable(isToggledHiddenByDefault: true),
         TextColumn::make('created_at')
+          ->label(__('resources/generates.columns.created_at'))
           ->dateTime()
           ->sortable()
           ->toggleable(isToggledHiddenByDefault: true),
         TextColumn::make('updated_at')
+          ->label(__('resources/generates.columns.updated_at'))
           ->dateTime()
           ->sortable()
           ->sinceTooltip()

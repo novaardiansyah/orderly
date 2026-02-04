@@ -14,7 +14,6 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use UnitEnum;
 
 class ActivityLogResource extends Resource
 {
@@ -22,11 +21,24 @@ class ActivityLogResource extends Resource
 
   protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentList;
 
-  protected static string|UnitEnum|null $navigationGroup = 'Logs';
-
   protected static ?int $navigationSort = 10;
 
   protected static ?string $recordTitleAttribute = 'description';
+
+  public static function getNavigationGroup(): ?string
+  {
+    return __('general.navigation_groups.logs');
+  }
+
+  public static function getModelLabel(): string
+  {
+    return __('general.resources.activity_log.label');
+  }
+
+  public static function getPluralModelLabel(): string
+  {
+    return __('general.resources.activity_log.plural_label');
+  }
 
   public static function form(Schema $schema): Schema
   {
@@ -45,18 +57,13 @@ class ActivityLogResource extends Resource
 
   public static function getRelations(): array
   {
-    return [
-      //
-    ];
+    return [];
   }
 
   public static function getPages(): array
   {
     return [
       'index' => ListActivityLogs::route('/'),
-      // 'create' => CreateActivityLog::route('/create'),
-      // 'edit'   => EditActivityLog::route('/{record}/edit'),
-      // 'view'   => ViewActivityLog::route('/{record}'),
     ];
   }
 
