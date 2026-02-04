@@ -8,12 +8,12 @@ use Filament\Resources\Pages\ViewRecord;
 
 class ViewGenerate extends ViewRecord
 {
-    protected static string $resource = GenerateResource::class;
+  protected static string $resource = GenerateResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            EditAction::make(),
-        ];
-    }
+  protected function getHeaderActions(): array
+  {
+    return [
+      EditAction::make(),
+    ];
+  }
 }
