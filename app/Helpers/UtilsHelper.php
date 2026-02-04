@@ -118,9 +118,9 @@ function saveActivityLog(array $data = [], $modelMorp = null): ActivityLog
 {
   $causer = auth()->user() ?? User::where('email', 'system@novaardiansyah.id')->first();
 
-  $model = $data['model'] ?? '';
-  $event = $data['event'] ?? '';
-  $changes = [];
+  $model    = $data['model'] ?? '';
+  $event    = $data['event'] ?? '';
+  $changes  = [];
   $oldValue = [];
 
   if ($modelMorp) {
@@ -140,13 +140,13 @@ function saveActivityLog(array $data = [], $modelMorp = null): ActivityLog
   unset($data['model']);
 
   return ActivityLog::create(array_merge([
-    'log_name' => 'Resource',
-    'description' => "{$model} {$event} by {$causer->name}",
-    'event' => $event,
-    'causer_type' => User::class,
-    'causer_id' => $causer->id,
+    'log_name'        => 'Resource',
+    'description'     => "{$model} {$event} by {$causer->name}",
+    'event'           => $event,
+    'causer_type'     => User::class,
+    'causer_id'       => $causer->id,
     'prev_properties' => $oldValue,
-    'properties' => $changes,
+    'properties'      => $changes,
   ], $data));
 }
 
