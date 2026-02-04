@@ -1,6 +1,10 @@
 <?php
 
 return [
+  'resource' => [
+    'label'        => 'Log Aktivitas',
+    'plural_label' => 'Log Aktivitas',
+  ],
   'sections' => [
     'general_description' => 'Informasi umum',
     'location_description' => 'Informasi lokasi dan klien',

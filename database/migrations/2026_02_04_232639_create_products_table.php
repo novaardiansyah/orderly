@@ -18,6 +18,7 @@ return new class extends Migration
       $table->decimal('sell_price', 10, 2)->default(0);
       $table->decimal('cost_price', 10, 2)->default(0);
       $table->integer('stock')->default(0);
+      $table->softDeletes();
       $table->timestamps();
     });
   }

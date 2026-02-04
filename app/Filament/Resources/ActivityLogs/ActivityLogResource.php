@@ -32,12 +32,12 @@ class ActivityLogResource extends Resource
 
   public static function getModelLabel(): string
   {
-    return __('general.resources.activity_log.label');
+    return __('resources/activity_logs.resource.label');
   }
 
   public static function getPluralModelLabel(): string
   {
-    return __('general.resources.activity_log.plural_label');
+    return __('resources/activity_logs.resource.plural_label');
   }
 
   public static function form(Schema $schema): Schema

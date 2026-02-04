@@ -1,6 +1,10 @@
 <?php
 
 return [
+  'resource' => [
+    'label'        => 'Activity Log',
+    'plural_label' => 'Activity Logs',
+  ],
   'sections' => [
     'general_description' => 'General information',
     'location_description' => 'Location and client information',

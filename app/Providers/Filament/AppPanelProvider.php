@@ -66,6 +66,7 @@ class AppPanelProvider extends PanelProvider
         Authenticate::class,
       ])
       ->navigationGroups([
+        'Operations' => NavigationGroup::make(fn() => __('general.navigation_groups.operations')),
         'Settings' => NavigationGroup::make(fn() => __('general.navigation_groups.settings')),
         'Logs' => NavigationGroup::make(fn() => __('general.navigation_groups.logs')),
       ])

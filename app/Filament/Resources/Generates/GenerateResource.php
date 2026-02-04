@@ -23,6 +23,7 @@ class GenerateResource extends Resource
   protected static ?string $model = Generate::class;
 
   protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedIdentification;
+
   protected static ?int $navigationSort = 20;
 
   protected static ?string $recordTitleAttribute = 'name';
@@ -34,12 +35,12 @@ class GenerateResource extends Resource
 
   public static function getModelLabel(): string
   {
-    return __('general.resources.generate.label');
+    return __('resources/generates.resource.label');
   }
 
   public static function getPluralModelLabel(): string
   {
-    return __('general.resources.generate.plural_label');
+    return __('resources/generates.resource.plural_label');
   }
 
   public static function form(Schema $schema): Schema

@@ -2,25 +2,28 @@
 
 return [
   'navigation_groups' => [
-    'settings' => 'Pengaturan',
-    'logs' => 'Log',
+    'settings'   => 'Pengaturan',
+    'logs'       => 'Log',
+    'operations' => 'Operasional',
   ],
   'resources' => [
     'activity_log' => [
-      'label' => 'Log Aktivitas',
+      'label'        => 'Log Aktivitas',
       'plural_label' => 'Log Aktivitas',
-    ],
-    'generate' => [
-      'label' => 'Generate',
-      'plural_label' => 'Generate',
     ],
   ],
   'actions' => [
     'create' => 'Buat',
-    'edit' => 'Ubah',
+    'edit'   => 'Ubah',
     'delete' => 'Hapus',
-    'save' => 'Simpan',
+    'save'   => 'Simpan',
     'cancel' => 'Batal',
-    'view' => 'Lihat',
+    'view'   => 'Lihat',
+  ],
+  'labels' => [
+    'row_index'  => '#',
+    'deleted_at' => 'Dihapus Pada',
+    'created_at' => 'Dibuat Pada',
+    'updated_at' => 'Diperbarui Pada',
   ],
 ];
