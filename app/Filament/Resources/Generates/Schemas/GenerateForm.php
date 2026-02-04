@@ -21,7 +21,6 @@ class GenerateForm
             TextInput::make('prefix')
               ->required()
               ->maxLength(5)
-              ->suffix('-')
               ->live(onBlur: true)
               ->afterStateUpdated(fn(callable $set, callable $get) => self::handleReviewID($set, $get)),
             TextInput::make('separator')

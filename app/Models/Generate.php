@@ -17,4 +17,9 @@ class Generate extends Model
   protected $casts = [
     'queue' => 'integer',
   ];
+
+  public function getNextId(): string
+  {
+    return getCode($this->alias, false);
+  }
 }

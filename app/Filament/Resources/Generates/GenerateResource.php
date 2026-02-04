@@ -51,10 +51,10 @@ class GenerateResource extends Resource
   public static function getPages(): array
   {
     return [
-      'index' => ListGenerates::route('/'),
+      'index'  => ListGenerates::route('/'),
       'create' => CreateGenerate::route('/create'),
-      'view' => ViewGenerate::route('/{record}'),
-      'edit' => EditGenerate::route('/{record}/edit'),
+      'view'   => ViewGenerate::route('/{record}'),
+      'edit'   => EditGenerate::route('/{record}/edit'),
     ];
   }
 

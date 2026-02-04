@@ -11,15 +11,22 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditGenerate extends EditRecord
 {
-    protected static string $resource = GenerateResource::class;
+  protected static string $resource = GenerateResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            ViewAction::make(),
-            DeleteAction::make(),
-            ForceDeleteAction::make(),
-            RestoreAction::make(),
-        ];
-    }
+  protected function getHeaderActions(): array
+  {
+    return [
+      ViewAction::make(),
+      DeleteAction::make(),
+      ForceDeleteAction::make(),
+      RestoreAction::make(),
+    ];
+  }
+
+  protected function fillForm(): void
+  {
+    $record = $this->getRecord();
+    $record->next_id = $record->getNextId();
+    $this->fillFormWithDataAndCallHooks($record);
+  }
 }
