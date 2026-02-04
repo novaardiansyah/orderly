@@ -63,6 +63,10 @@ class AppPanelProvider extends PanelProvider
       ->authMiddleware([
         Authenticate::class,
       ])
+      ->navigationGroups([
+        'Settings',
+        'Logs',
+      ])
       ->renderHook(
         PanelsRenderHook::HEAD_END,
         fn(): HtmlString => new HtmlString('
