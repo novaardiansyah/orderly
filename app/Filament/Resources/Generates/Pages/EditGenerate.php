@@ -29,4 +29,10 @@ class EditGenerate extends EditRecord
     $record->next_id = $record->getNextId();
     $this->fillFormWithDataAndCallHooks($record);
   }
+
+  protected function getRedirectUrl(): string
+  {
+    $resource = static::getResource();
+    return $resource::getUrl('index');
+  }
 }

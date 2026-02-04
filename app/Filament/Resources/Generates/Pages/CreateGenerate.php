@@ -7,5 +7,11 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateGenerate extends CreateRecord
 {
-    protected static string $resource = GenerateResource::class;
+  protected static string $resource = GenerateResource::class;
+
+  protected function getRedirectUrl(): string
+  {
+    $resource = static::getResource();
+    return $resource::getUrl('index');
+  }
 }

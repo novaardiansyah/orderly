@@ -74,7 +74,7 @@ class GenerateForm
     $name = $get('name');
 
     if ($name) {
-      $set('alias', str()->slug($name));
+      $set('alias', str()->slug($name, '_'));
     }
   }
 }
