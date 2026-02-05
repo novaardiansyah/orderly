@@ -1,7 +1,8 @@
 <?php
+
 /*
  * Project Name: orderly
- * File: ProductCategory.php
+ * File: ProductSubCategory.php
  * Created Date: Thursday February 5th 2026
  *
  * Author: Nova Ardiansyah admin@novaardiansyah.id
@@ -15,27 +16,22 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Observers\ProductCategoryObserver;
+use App\Observers\ProductSubCategoryObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-#[ObservedBy(ProductCategoryObserver::class)]
-class ProductCategory extends Model
+#[ObservedBy(ProductSubCategoryObserver::class)]
+class ProductSubCategory extends Model
 {
   use SoftDeletes;
 
-  protected $table = 'product_categories';
+  protected $table = 'product_sub_categories';
 
-  protected $fillable = ['name', 'description'];
+  protected $fillable = ['category_id', 'name', 'description'];
 
-  public function products()
+  public function category()
   {
-    return $this->hasMany(Product::class);
-  }
-
-  public function subCategories()
-  {
-    return $this->hasMany(ProductSubCategory::class, 'category_id');
+    return $this->belongsTo(ProductCategory::class);
   }
 }
