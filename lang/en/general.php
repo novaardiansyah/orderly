@@ -15,9 +15,10 @@ return [
     'view'   => 'View',
   ],
   'labels' => [
-    'row_index'  => '#',
-    'deleted_at' => 'Deleted At',
-    'created_at' => 'Created At',
-    'updated_at' => 'Updated At',
+    'row_index'              => '#',
+    'deleted_at'             => 'Deleted At',
+    'created_at'             => 'Created At',
+    'updated_at'             => 'Updated At',
+    'timestamps_description' => 'Timestamps information',
   ],
 ];

@@ -21,9 +21,9 @@ return [
     'view'   => 'Lihat',
   ],
   'labels' => [
-    'row_index'  => '#',
-    'deleted_at' => 'Dihapus Pada',
-    'created_at' => 'Dibuat Pada',
-    'updated_at' => 'Diperbarui Pada',
+    'row_index'              => '#',
+    'deleted_at'             => 'Dihapus Pada',
+    'created_at'             => 'Dibuat Pada',
+    'updated_at'             => 'Diperbarui Pada',
   ],
 ];

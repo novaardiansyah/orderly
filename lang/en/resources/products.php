@@ -5,7 +5,10 @@ return [
     'label'        => 'Product',
     'plural_label' => 'Products',
   ],
-  'sections' => [],
+  'sections' => [
+    'general_description' => 'General information',
+    'pricing_stock_description' => 'Pricing and Stock information',
+  ],
   'columns' => [
     'code'       => 'ID Product',
     'name'       => 'Name',

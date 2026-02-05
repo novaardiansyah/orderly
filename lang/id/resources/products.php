@@ -5,7 +5,10 @@ return [
     'label'        => 'Produk',
     'plural_label' => 'Produk',
   ],
-  'sections' => [],
+  'sections' => [
+    'general_description' => 'Informasi umum',
+    'pricing_stock_description' => 'Informasi harga dan stok',
+  ],
   'columns' => [
     'code'       => 'ID Produk',
     'name'       => 'Nama',

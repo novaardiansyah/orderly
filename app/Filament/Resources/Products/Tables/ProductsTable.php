@@ -2,10 +2,14 @@
 
 namespace App\Filament\Resources\Products\Tables;
 
+use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\ForceDeleteBulkAction;
+use Filament\Actions\RestoreAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -33,17 +37,17 @@ class ProductsTable
           ->toggleable(),
         TextColumn::make('sell_price')
           ->label(__('resources/products.columns.sell_price'))
-          ->money()
+          ->formatStateUsing(fn(?string $state) => toIndonesianCurrency((float) ($state ?? 0)))
           ->sortable()
           ->toggleable(),
         TextColumn::make('cost_price')
           ->label(__('resources/products.columns.cost_price'))
-          ->money()
+          ->formatStateUsing(fn(?string $state) => toIndonesianCurrency((float) ($state ?? 0)))
           ->sortable()
           ->toggleable(),
         TextColumn::make('stock')
           ->label(__('resources/products.columns.stock'))
-          ->numeric()
+          ->formatStateUsing(fn(?string $state) => formatQuantity((float) ($state ?? 0), 0, ''))
           ->sortable()
           ->toggleable(),
         TextColumn::make('created_at')
@@ -72,8 +76,13 @@ class ProductsTable
           ->native(false),
       ])
       ->recordActions([
-        ViewAction::make(),
-        EditAction::make(),
+        ActionGroup::make([
+          ViewAction::make(),
+          EditAction::make(),
+          DeleteAction::make(),
+          ForceDeleteAction::make(),
+          RestoreAction::make(),
+        ])
       ])
       ->toolbarActions([
         BulkActionGroup::make([

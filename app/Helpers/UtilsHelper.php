@@ -29,6 +29,23 @@ function toIndonesianCurrency(float $number = 0, int $precision = 0, string $cur
   return $replace;
 }
 
+function formatQuantity(float $number = 0, int $precision = 0, string $unit = 'Pcs', bool $showUnit = true)
+{
+  $result = 0;
+
+  if ($number < 0) {
+    $result = '-' . $unit . number_format(abs($number), $precision, ',', '.');
+  } else {
+    $result = $unit . number_format($number, $precision, ',', '.');
+  }
+
+  if ($showUnit)
+    return $result;
+
+  $replace = str_replace(range(0, 9), '-', $result);
+  return $replace;
+}
+
 function getCode(string $alias, bool $isNotPreview = true)
 {
   $genn = Generate::withTrashed()->where('alias', $alias)->first();
