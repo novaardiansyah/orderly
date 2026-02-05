@@ -1,5 +1,19 @@
 <?php
 
+/*
+ * Project Name: orderly
+ * File: Product.php
+ * Created Date: Wednesday February 4th 2026
+ *
+ * Author: Nova Ardiansyah admin@novaardiansyah.id
+ * Website: https://novaardiansyah.id
+ * MIT License: https://github.com/novaardiansyah/orderly/blob/main/LICENSE
+ *
+ * Copyright (c) 2026 Nova Ardiansyah, Org
+ */
+
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -21,4 +35,9 @@ class Product extends Model
     'cost_price' => 'decimal:2',
     'stock' => 'integer',
   ];
+
+  public function category()
+  {
+    return $this->belongsTo(ProductCategory::class);
+  }
 }

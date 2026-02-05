@@ -35,6 +35,12 @@ class ProductsTable
           ->label(__('resources/products.columns.name'))
           ->searchable()
           ->toggleable(),
+        TextColumn::make('category.name')
+          ->label(__('resources/products.columns.category'))
+          ->searchable()
+          ->sortable()
+          ->toggleable()
+          ->badge(),
         TextColumn::make('sell_price')
           ->label(__('resources/products.columns.sell_price'))
           ->formatStateUsing(fn(?string $state) => toIndonesianCurrency((float) ($state ?? 0)))

@@ -15,5 +15,6 @@ return [
     'sell_price' => 'Harga Jual',
     'cost_price' => 'Harga Modal (HPP)',
     'stock'      => 'Stok',
+    'category'   => 'Kategori',
   ],
 ];

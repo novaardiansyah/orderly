@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\Products\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -30,13 +31,16 @@ class ProductForm
           ->description(__('resources/products.sections.general_description'))
           ->columns(2)
           ->schema([
-            TextInput::make('code')
-              ->label(__('resources/products.columns.code'))
-              ->disabled()
-              ->placeholder(getCode('product_id', false)),
             TextInput::make('name')
               ->label(__('resources/products.columns.name'))
               ->required(),
+            Select::make('category_id')
+              ->label(__('resources/products.columns.category'))
+              ->relationship('category', 'name')
+              ->required()
+              ->searchable()
+              ->preload()
+              ->native(false),
           ]),
 
         Section::make()
@@ -48,8 +52,9 @@ class ProductForm
               ->required()
               ->numeric()
               ->default(0)
+              ->prefix('Rp')
               ->live(onBlur: true)
-              ->prefix('Rp'),
+              ->hint(fn(?string $state) => toIndonesianCurrency((float) ($state ?? 0))),
             TextInput::make('cost_price')
               ->label(__('resources/products.columns.cost_price'))
               ->required()
