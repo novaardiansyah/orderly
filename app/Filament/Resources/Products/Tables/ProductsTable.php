@@ -1,5 +1,19 @@
 <?php
 
+/*
+ * Project Name: orderly
+ * File: ProductsTable.php
+ * Created Date: Wednesday February 4th 2026
+ *
+ * Author: Nova Ardiansyah admin@novaardiansyah.id
+ * Website: https://novaardiansyah.id
+ * MIT License: https://github.com/novaardiansyah/orderly/blob/main/LICENSE
+ *
+ * Copyright (c) 2026 Nova Ardiansyah, Org
+ */
+
+declare(strict_types=1);
+
 namespace App\Filament\Resources\Products\Tables;
 
 use Filament\Actions\ActionGroup;
@@ -37,6 +51,12 @@ class ProductsTable
           ->toggleable(),
         TextColumn::make('category.name')
           ->label(__('resources/products.columns.category'))
+          ->searchable()
+          ->sortable()
+          ->toggleable()
+          ->badge(),
+        TextColumn::make('subCategory.name')
+          ->label(__('resources/products.columns.sub_category'))
           ->searchable()
           ->sortable()
           ->toggleable()

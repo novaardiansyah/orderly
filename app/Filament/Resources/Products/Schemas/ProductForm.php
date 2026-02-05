@@ -40,6 +40,20 @@ class ProductForm
               ->required()
               ->searchable()
               ->preload()
+              ->native(false)
+              ->live()
+              ->afterStateUpdated(function (callable $set) {
+                $set('sub_category_id', null);
+              }),
+            Select::make('sub_category_id')
+              ->label(__('resources/products.columns.sub_category'))
+              ->relationship(
+                'subCategory',
+                'name',
+                fn($query, $get) => $query->where('category_id', $get('category_id'))
+              )
+              ->searchable()
+              ->preload()
               ->native(false),
           ]),
 

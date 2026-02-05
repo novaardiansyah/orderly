@@ -28,7 +28,7 @@ class Product extends Model
 
   protected $table = 'products';
 
-  protected $fillable = ['code', 'name', 'sell_price', 'cost_price', 'stock', 'category_id'];
+  protected $fillable = ['code', 'name', 'sell_price', 'cost_price', 'stock', 'category_id', 'sub_category_id'];
 
   protected $casts = [
     'sell_price' => 'decimal:2',
@@ -39,5 +39,10 @@ class Product extends Model
   public function category()
   {
     return $this->belongsTo(ProductCategory::class);
+  }
+
+  public function subCategory()
+  {
+    return $this->belongsTo(ProductSubCategory::class);
   }
 }

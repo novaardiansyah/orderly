@@ -15,6 +15,7 @@ return [
     'sell_price' => 'Sell Price',
     'cost_price' => 'Cost Price (HPP)',
     'stock'      => 'Stock',
-    'category'   => 'Category',
+    'category'     => 'Category',
+    'sub_category' => 'Sub Category',
   ],
 ];

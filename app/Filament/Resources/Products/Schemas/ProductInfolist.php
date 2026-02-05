@@ -22,6 +22,10 @@ class ProductInfolist
               ->copyable(),
             TextEntry::make('name')
               ->label(__('resources/products.columns.name')),
+            TextEntry::make('category.name')
+              ->label(__('resources/products.columns.category')),
+            TextEntry::make('subCategory.name')
+              ->label(__('resources/products.columns.sub_category')),
           ]),
 
         Section::make()
