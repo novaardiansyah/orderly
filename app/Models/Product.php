@@ -28,7 +28,7 @@ class Product extends Model
 
   protected $table = 'products';
 
-  protected $fillable = ['code', 'name', 'sell_price', 'cost_price', 'stock'];
+  protected $fillable = ['code', 'name', 'sell_price', 'cost_price', 'stock', 'category_id'];
 
   protected $casts = [
     'sell_price' => 'decimal:2',
