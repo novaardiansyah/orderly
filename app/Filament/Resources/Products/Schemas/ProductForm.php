@@ -86,6 +86,10 @@ class ProductForm
               ->live(onBlur: true)
               ->hint(fn(?string $state) => formatQuantity((float) ($state ?? 0), 0, '')),
           ])
+      ])
+      ->columns([
+        '2xl' => 2,
+        'lg' => 1,
       ]);
   }
 }

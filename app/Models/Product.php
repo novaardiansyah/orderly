@@ -19,6 +19,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use App\Observers\ProductObserver;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[ObservedBy([ProductObserver::class])]
@@ -36,13 +38,18 @@ class Product extends Model
     'stock' => 'integer',
   ];
 
-  public function category()
+  public function category(): BelongsTo
   {
     return $this->belongsTo(ProductCategory::class);
   }
 
-  public function subCategory()
+  public function subCategory(): BelongsTo
   {
     return $this->belongsTo(ProductSubCategory::class);
+  }
+
+  public function images(): HasMany
+  {
+    return $this->hasMany(ProductImage::class);
   }
 }
