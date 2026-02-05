@@ -15,9 +15,20 @@
 namespace App\Observers;
 
 use App\Models\ProductImage;
+use App\Services\ProductImageResource\ProductImageService;
 
 class ProductImageObserver
 {
+  public function saving(ProductImage $productImage): void
+  {
+    $isImageChange = $productImage->isDirty('file_path');
+    $oldImage = $productImage->getOriginal('file_path');
+
+    if ($isImageChange) {
+      ProductImageService::deleteImage($oldImage);
+    }
+  }
+
   public function created(ProductImage $productImage): void
   {
     $this->_log('Created', $productImage);
@@ -40,6 +51,7 @@ class ProductImageObserver
 
   public function forceDeleted(ProductImage $productImage): void
   {
+    ProductImageService::deleteImage($productImage->file_path);
     $this->_log('Force Deleted', $productImage);
   }
 
