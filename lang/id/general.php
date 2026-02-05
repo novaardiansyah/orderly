@@ -25,5 +25,6 @@ return [
     'deleted_at'             => 'Dihapus Pada',
     'created_at'             => 'Dibuat Pada',
     'updated_at'             => 'Diperbarui Pada',
+    'timestamps_description' => 'Informasi Waktu',
   ],
 ];
