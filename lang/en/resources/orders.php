@@ -12,6 +12,8 @@ return [
   ],
   'columns' => [
     'code'           => 'Order ID',
+    'quantity'       => 'Quantity',
+    'total_price'    => 'Total Price',
     'notes'          => 'Notes',
     'status'         => 'Status',
     'payment_method' => 'Payment Method',

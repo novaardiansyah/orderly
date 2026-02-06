@@ -12,6 +12,8 @@ return [
   ],
   'columns' => [
     'code'           => 'ID Pesanan',
+    'quantity'       => 'Kuantitas',
+    'total_price'    => 'Total Harga',
     'notes'          => 'Catatan',
     'status'         => 'Status',
     'payment_method' => 'Metode Pembayaran',
