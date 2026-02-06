@@ -18,6 +18,7 @@ return new class extends Migration
       $table->string('phone')->nullable();
       $table->text('notes')->nullable();
       $table->boolean('is_member')->default(false);
+      $table->softDeletes();
       $table->timestamps();
     });
   }
