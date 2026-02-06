@@ -6,7 +6,8 @@ return [
     'plural_label' => 'Pelanggan',
   ],
   'sections' => [
-    'detail_description' => 'Detail pelanggan information',
+    'detail_description' => 'Informasi detail pelanggan',
+    'timestamp_description' => 'Informasi timestamp',
   ],
   'columns' => [
     'code'       => 'Pelanggan ID',

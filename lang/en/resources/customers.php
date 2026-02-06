@@ -7,6 +7,7 @@ return [
   ],
   'sections' => [
     'detail_description' => 'Detail customer information',
+    'timestamp_description' => 'Timestamp information',
   ],
   'columns' => [
     'code'       => 'Customer ID',
