@@ -26,7 +26,9 @@ class CustomerInfolist
               ->label(__('resources/customers.columns.name')),
             TextEntry::make('phone')
               ->label(__('resources/customers.columns.phone'))
-              ->placeholder('-'),
+              ->placeholder('-')
+              ->badge()
+              ->copyable(),
             IconEntry::make('is_member')
               ->label(__('resources/customers.columns.is_member'))
               ->boolean(),

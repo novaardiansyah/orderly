@@ -7,5 +7,11 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateOrder extends CreateRecord
 {
-    protected static string $resource = OrderResource::class;
+  protected static string $resource = OrderResource::class;
+
+  protected function getRedirectUrl(): string
+  {
+    $resource = static::getResource();
+    return $resource::getUrl('index');
+  }
 }

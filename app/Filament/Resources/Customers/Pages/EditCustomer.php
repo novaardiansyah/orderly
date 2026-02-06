@@ -11,15 +11,21 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditCustomer extends EditRecord
 {
-    protected static string $resource = CustomerResource::class;
+  protected static string $resource = CustomerResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            ViewAction::make(),
-            DeleteAction::make(),
-            ForceDeleteAction::make(),
-            RestoreAction::make(),
-        ];
-    }
+  protected function getHeaderActions(): array
+  {
+    return [
+      ViewAction::make(),
+      DeleteAction::make(),
+      ForceDeleteAction::make(),
+      RestoreAction::make(),
+    ];
+  }
+
+  protected function getRedirectUrl(): string
+  {
+    $resource = static::getResource();
+    return $resource::getUrl('index');
+  }
 }
