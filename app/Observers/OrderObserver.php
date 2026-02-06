@@ -20,6 +20,11 @@ use App\Models\Order;
 
 class OrderObserver
 {
+  public function creating(Order $order): void
+  {
+    $order->code = getCode('order_id');
+  }
+
   public function created(Order $order): void
   {
     $this->_log('Created', $order);
