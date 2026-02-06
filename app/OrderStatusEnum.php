@@ -7,17 +7,17 @@ use Filament\Support\Contracts\HasLabel;
 enum OrderStatusEnum: string implements HasLabel
 {
   case PENDING    = 'pending';
-  case PROCESSING = 'processing';
+  case COOKING    = 'cooking';
+  case DELIVERING = 'delivering';
   case COMPLETED  = 'completed';
-  case CANCELLED  = 'cancelled';
 
   public function getLabel(): string
   {
     return match ($this) {
-      self::PENDING    => 'Pending',
-      self::PROCESSING => 'Processing',
-      self::COMPLETED  => 'Completed',
-      self::CANCELLED  => 'Cancelled',
+      self::PENDING    => __('resources/orders.enums.order_status.pending'),
+      self::COOKING    => __('resources/orders.enums.order_status.cooking'),
+      self::DELIVERING => __('resources/orders.enums.order_status.delivering'),
+      self::COMPLETED  => __('resources/orders.enums.order_status.completed'),
     };
   }
 }

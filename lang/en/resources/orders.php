@@ -21,4 +21,22 @@ return [
     'customer_name'  => 'Customer Name',
     'customer_phone' => 'Customer Phone',
   ],
+  'enums' => [
+    'order_status' => [
+      'pending'        => 'Pending',
+      'cooking'        => 'Cooking',
+      'delivering'     => 'Delivering',
+      'completed'      => 'Completed',
+    ],
+    'payment_method' => [
+      'qris'     => 'QRIS',
+      'cash'     => 'Cash',
+      'transfer' => 'Transfer',
+    ],
+    'payment_status' => [
+      'pending'   => 'Pending',
+      'paid'      => 'Paid',
+      'cancelled' => 'Cancelled',
+    ],
+  ],
 ];

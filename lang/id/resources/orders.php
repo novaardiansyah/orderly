@@ -21,4 +21,22 @@ return [
     'customer_name'  => 'Nama Pelanggan',
     'customer_phone' => 'Nomor Telepon',
   ],
+  'enums' => [
+    'order_status' => [
+      'pending'        => 'Pending',
+      'cooking'        => 'Sedang Dimasak',
+      'delivering'     => 'Diantar',
+      'completed'      => 'Selesai',
+    ],
+    'payment_method' => [
+      'qris'     => 'QRIS',
+      'cash'     => 'Tunai',
+      'transfer' => 'Transfer',
+    ],
+    'payment_status' => [
+      'pending'   => 'Pending',
+      'paid'      => 'Lunas',
+      'cancelled' => 'Dibatalkan',
+    ],
+  ],
 ];

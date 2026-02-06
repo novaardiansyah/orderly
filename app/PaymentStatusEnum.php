@@ -13,9 +13,9 @@ enum PaymentStatusEnum: string implements HasLabel
   public function getLabel(): string
   {
     return match ($this) {
-      self::PENDING    => 'Pending',
-      self::PAID       => 'Paid',
-      self::CANCELLED  => 'Cancelled',
+      self::PENDING    => __('resources/orders.enums.payment_status.pending'),
+      self::PAID       => __('resources/orders.enums.payment_status.paid'),
+      self::CANCELLED  => __('resources/orders.enums.payment_status.cancelled'),
     };
   }
 }

@@ -13,9 +13,9 @@ enum PaymentMethodEnum: string implements HasLabel
   public function getLabel(): string
   {
     return match ($this) {
-      self::QRIS     => 'QRIS',
-      self::CASH     => 'Cash',
-      self::TRANSFER => 'Transfer',
+      self::QRIS     => __('resources/orders.enums.payment_method.qris'),
+      self::CASH     => __('resources/orders.enums.payment_method.cash'),
+      self::TRANSFER => __('resources/orders.enums.payment_method.transfer'),
     };
   }
 }
