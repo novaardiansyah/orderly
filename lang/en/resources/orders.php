@@ -12,6 +12,7 @@ return [
   ],
   'columns' => [
     'code'           => 'Order ID',
+    'customer_name'  => 'Customer Name',
     'quantity'       => 'Quantity',
     'total_price'    => 'Total Price',
     'notes'          => 'Notes',

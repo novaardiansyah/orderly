@@ -42,7 +42,6 @@ class OrderForm
               ->schema([
                 Hidden::make('customer_id')
                   ->nullable(),
-                  
                 TextInput::make('phone')
                   ->label(__('resources/orders.labels.customer_phone'))
                   ->maxLength(15)

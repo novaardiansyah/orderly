@@ -31,6 +31,10 @@ class OrdersTable
           ->toggleable()
           ->copyable()
           ->badge(),
+        TextColumn::make('customer.name')
+          ->label(__('resources/orders.columns.customer_name'))
+          ->searchable()
+          ->toggleable(),
         TextColumn::make('quantity')
           ->label(__('resources/orders.columns.quantity'))
           ->formatStateUsing(fn(?string $state) => formatQuantity((float) ($state ?? 0), 0, ''))
@@ -76,6 +80,7 @@ class OrdersTable
           ->sinceTooltip()
           ->toggleable(isToggledHiddenByDefault: true),
       ])
+      ->defaultSort('updated_at', 'desc')
       ->filters([
         TrashedFilter::make()
           ->searchable()
